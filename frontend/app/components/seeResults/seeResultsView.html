@@ -1,0 +1,76 @@
+<header>
+  <ul class="navBar">
+    <li>
+      <span data-ng-click="openAndCloseMenu();"
+        ><img
+          src="../../../assets/img/menu-white-48dp.svg"
+          alt="icon de menu de hamburger"
+      /></span>
+    </li>
+
+    <li class="logout" data-ng-click="logoutFun();">Logout</li>
+  </ul>
+</header>
+
+<div class="menu" data-ng-show="stateMenu">
+  <ul>
+    <li class="optionsMenu theX">
+      <span data-ng-click="openAndCloseMenu();"
+        ><img src="../../../assets/img/close-black-48dp.svg" alt="icon de x"
+      /></span>
+    </li>
+    <li class="optionsMenu liFirst">
+      <a class="itens" ui-sref="home"><span>Home</span></a>
+    </li>
+    <li class="optionsMenu">
+      <a class="itens" ui-sref="writePontis"><span>Lançar Pontos</span></a>
+    </li>
+  </ul>
+</div>
+
+<div class="container">
+  <div class="flexItem2"></div>
+
+  <div class="flexItem8 bodyAllGames">
+    <h1>Seus Resultados</h1>
+    <span class="spanDate"
+      >{{ resultUser.firstGame | date: 'dd/MM/yyyy' }} até {{resultUser.lastGame
+      | date: 'dd/MM/yyyy'}}
+    </span>
+
+    <table class="resultTable">
+      <tr>
+        <td class="itemText">Nº de Jogos Disputados</td>
+        <td class="itemData">{{ resultUser.totalGames }}</td>
+      </tr>
+
+      <tr>
+        <td class="itemText">Nº de pontos marcados</td>
+        <td class="itemData">{{ resultUser.totalPoints }}</td>
+      </tr>
+
+      <tr>
+        <td class="itemText">Media de pontos por Jogo</td>
+        <td class="itemData">{{ resultUser.mediaPoints }}</td>
+      </tr>
+
+      <tr>
+        <td class="itemText">Maior pontuação em um Jogo</td>
+        <td class="itemData">{{ resultUser.highestScore }}</td>
+      </tr>
+
+      <tr>
+        <td class="itemText">Menor pontuação em um Jogo</td>
+        <td class="itemData">{{ resultUser.lowestScore }}</td>
+      </tr>
+      <tr>
+        <td class="itemText">Quebra de recordes</td>
+        <td class="itemData">{{ user.timeRecord }}</td>
+      </tr>
+    </table>
+
+    <br />
+  </div>
+
+  <div class="flexItem2"></div>
+</div>
