@@ -144,7 +144,7 @@ module.exports = {
         firstGame: firstGame,
         lastGame: lastGame,
         totalPoints: totalPoints,
-        mediaPoints: mediaPoints,
+        mediaPoints: parseFloat(mediaPoints.toFixed(2)),
         totalGames: totalGames,
         highestScore: highestScore,
         lowestScore: lowestScore,

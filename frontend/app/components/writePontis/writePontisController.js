@@ -17,16 +17,16 @@ function writePontisController(
 
   $scope.saveGame = () => {
     let month =
-      $scope.game.dtGame.getMonth() > 9
+      $scope.game.dtGame.getMonth() > 8
         ? String(Number($scope.game.dtGame.getMonth() + 1))
         : String("0" + Number($scope.game.dtGame.getMonth() + 1));
 
     let year = String($scope.game.dtGame.getFullYear());
 
     let day =
-      $scope.game.dtGame.getDay() > 9
-        ? String(Number($scope.game.dtGame.getDay() + 1))
-        : String("0" + Number($scope.game.dtGame.getDay() + 1));
+      $scope.game.dtGame.getDate() > 9
+        ? String($scope.game.dtGame.getDate())
+        : String("0" + $scope.game.dtGame.getDate());
 
     $scope.game.gameDate = String(year + "-" + month + "-" + day);
 
