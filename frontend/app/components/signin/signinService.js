@@ -4,7 +4,12 @@ function signinService($http) {
   let _saveUser = (user) => {
     return new Promise((result, reject) => {
       try {
-        return result({ status: 200, exist: false });
+        $http({
+          url: "http://localhost:3333/user",
+          method: "POST",
+        }).then((resp) => {
+          return result(resp.data);
+        });
       } catch (error) {
         return reject(error);
       }
