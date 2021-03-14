@@ -1,0 +1,22 @@
+.divSignIn {
+  margin: 10%;
+}
+
+.buttonSingIn {
+  padding: 2% !important;
+  margin: 0 !important;
+}
+
+.errSign {
+  margin: -7px 0 10px;
+  color: #ff4500;
+  font-size: 13px;
+}
+
+.errorInput {
+  border: 1px solid #ff4500 !important;
+}
+
+.normalInput {
+  border: 1px solid #ccc;
+}

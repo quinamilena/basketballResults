@@ -1,0 +1,20 @@
+# Para este arquivo ser o principal editor
+root = true
+
+[*.{js, css, html}]
+# Para definir o tipo de indetação dos arquivos
+indent_style = tab
+indent_size = 2
+max_line_length=80
+
+# Para cada final de linha
+end_of_line = lf
+
+# A linguagem de formatação
+charset = utf-8
+
+# Para adicionar uma nova linha ao final de cada arquivo
+insert_final_newline = true
+
+# Para apagar os espaço não ultilizado de cada arquivo
+trim_trailing_whitespace = true

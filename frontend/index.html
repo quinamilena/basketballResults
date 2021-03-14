@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="bas_app">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basquete</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/beginningStyle.css" />
+    <link rel="stylesheet" href="./assets/css/homeStyle.css" />
+    <link rel="stylesheet" href="./assets/css/signinStyle.css" />
+    <link rel="stylesheet" href="./assets/css/seeResultsStyle.css" />
+    <link rel="stylesheet" href="./assets/css/writePontisStyle.css" />
+  </head>
+
+  <body>
+    <div ui-view></div>
+
+    <!-- Angular js -->
+    <script src="./assets/libs/angular/angular.min.js"></script>
+    <script src="./assets/libs/angular/angular-ui-router.js"></script>
+
+    <!-- Script -->
+    <script src="./app/app.module.js"></script>
+
+    <!-- Routes -->
+    <script src="./app/app.routes.js"></script>
+
+    <!-- Controllers -->
+    <script src="./app/components/beginning/beginningController.js"></script>
+    <script src="./app/components/home/homeController.js"></script>
+    <script src="./app/components/seeResults/seeResultsController.js"></script>
+    <script src="./app/components/signin/signinController.js"></script>
+    <script src="./app/components/writePontis/writePontisController.js"></script>
+
+    <!-- Services -->
+    <script src="./app/components/beginning/beginningService.js"></script>
+    <script src="./app/components/home/homeService.js"></script>
+    <script src="./app/components/seeResults/seeResultsService.js"></script>
+    <script src="./app/components/signin/signinService.js"></script>
+    <script src="./app/components/writePontis/writePontisService.js"></script>
+  </body>
+</html>
+
+<!-- Colores
+ => https://mycolor.space/?hex=%23FFA300&sub=1
+-->

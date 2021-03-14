@@ -1,0 +1,90 @@
+<header>
+  <ul class="navBar">
+    <li>
+      <span data-ng-click="openAndCloseMenu();"
+        ><img
+          src="../../../assets/img/menu-white-48dp.svg"
+          alt="icon de menu de hamburger"
+      /></span>
+    </li>
+
+    <li class="logout" data-ng-click="logoutFun();">Logout</li>
+  </ul>
+</header>
+
+<div class="menu" data-ng-show="stateMenu">
+  <ul>
+    <li class="optionsMenu theX">
+      <span data-ng-click="openAndCloseMenu();"
+        ><img src="../../../assets/img/close-black-48dp.svg" alt="icon de x"
+      /></span>
+    </li>
+    <li class="optionsMenu liFirst">
+      <a class="itens" ui-sref="home"><span>Home</span></a>
+    </li>
+    <li class="optionsMenu">
+      <a class="itens" ui-sref="seeResults"><span>Ver Resultados</span></a>
+    </li>
+  </ul>
+</div>
+
+<div class="container">
+  <div class="flexItem2"></div>
+
+  <div class="flexItem8 bodyAllGames">
+    <h1>Lançar Pontos</h1>
+
+    <br />
+
+    <div class="divBall">
+      <img
+        src="../../../assets/img/basketball-ball.svg"
+        alt="uma bola de basquete"
+      />
+    </div>
+
+    <div class="divForm">
+      <form name="writePoints" novalidate>
+        <label for="dtGame">Data do Jogo</label>
+        <input
+          type="date"
+          name="dtGame"
+          id="dtGame"
+          class="inputForm"
+          required=""
+          data-ng-model="game.dtGame"
+        />
+
+        <br />
+        <label for="quantPoints">Pontos marcados</label>
+        <input
+          type="number"
+          name="quantPoints"
+          id="quantPoints"
+          class="inputForm"
+          placeholder="Seus pontos marcados"
+          required=""
+          data-ng-model="game.quantPoints"
+        />
+
+        <input
+          type="submit"
+          class="buttonLogin widthBotton"
+          data-ng-disabled="writePoints.$invalid"
+          data-ng-click="saveGame();"
+          value="Salvar"
+        />
+
+        <p data-ng-show="mensagens.success" class="mensagens successMen">
+          Jogo salvo com successo !
+        </p>
+
+        <p data-ng-show="mensagens.error" class="mensagens errorMen">
+          Foi foi possível salvar o jogo :(
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <div class="flexItem2"></div>
+</div>

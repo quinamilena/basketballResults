@@ -1,0 +1,64 @@
+<header>
+  <ul class="navBar">
+    <li class="logout" data-ng-click="logoutFun();">Inicio</li>
+  </ul>
+</header>
+<div class="container">
+  <div class="flexItem2"></div>
+
+  <div class="flexItem8 bodyAllGames">
+    <h1>Sign in</h1>
+
+    <div class="divSignIn">
+      <form name="signin" novalidate>
+        <label for="nameUser">Nome</label>
+        <input
+          type="text"
+          name="nameUser"
+          id="nameUser"
+          minlength="3"
+          class="inputForm"
+          required=""
+          placeholder="Seu nome"
+          data-ng-model="user.name"
+        />
+
+        <br />
+        <label for="userLogin">Login</label>
+        <input
+          type="text"
+          name="userLogin"
+          id="userLogin"
+          class="inputForm"
+          placeholder="Escolha um login"
+          minlength="3"
+          maxlength="15"
+          required=""
+          data-ng-model="user.login"
+          data-ng-class="errorLogin ? 'errorInput' : 'normalInput'"
+        />
+        <p data-ng-show="errorLogin" class="errSign">
+          Este login já está sendo ultiizado
+        </p>
+
+        <input
+          type="submit"
+          data-ng-disabled="signin.$invalid"
+          class="buttonLogin widthBotton buttonSingIn"
+          data-ng-click="saveUser();"
+          value="Salvar"
+        />
+
+        <p data-ng-show="mensagens.success" class="mensagens successMen">
+          Jogo salvo com successo !
+        </p>
+
+        <p data-ng-show="mensagens.error" class="mensagens errorMen">
+          Foi foi possível salvar o jogo :(
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <div class="flexItem2"></div>
+</div>

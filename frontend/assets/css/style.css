@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Aldrich&display=swap");
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Audiowide", cursive !important;
+}
+
+a,
+p,
+span,
+select,
+text,
+button {
+  font-family: "Aldrich", sans-serif !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #212121;
+}
+
+body {
+  background-image: linear-gradient(
+    to left,
+    #ffa300,
+    #d4b800,
+    #a6c727,
+    #70d157,
+    #00d786
+  );
+}
+
+/* Div Body */
+.flex {
+  display: flex;
+}
+
+.flexItem6 {
+  flex: 6;
+}
+
+.flexItem2 {
+  flex: 2;
+}
+
+.flexItem4 {
+  flex: 4;
+}
+
+.flexItem8 {
+  flex: 8;
+}
+
+/* Navbar */
+ul.navBar {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.navBar li {
+  float: left;
+}
+
+ul.navBar li.logout {
+  float: right;
+  padding: 14px;
+  font-size: 17px;
+  color: #ffa300;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+ul.navBar li span {
+  cursor: pointer;
+  display: block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+ul.navBar li span:hover {
+  background-color: #111;
+}
+
+ul.navBar li span img {
+  padding-left: 12px;
+}
+
+/* Menu */
+.menu {
+  margin: -7% 0 0;
+  padding: 0;
+  width: 300px;
+  background-color: #ffffff;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+
+  z-index: 99;
+
+  outline: none;
+}
+
+.menu ul li.liFirst {
+  margin-top: 15%;
+}
+
+.menu ul li {
+  list-style-type: none;
+}
+
+.menu ul {
+  padding: 0;
+  margin: 0;
+}
+
+.menu ul li.theX {
+  text-align: end;
+  margin: 0;
+}
+.menu ul li.theX span {
+  cursor: pointer;
+}
+
+.menu ul li.theX span img {
+  padding: 5px 5px 0;
+  filter: invert(77%) sepia(45%) saturate(688%) hue-rotate(23deg)
+    brightness(89%) contrast(96%);
+}
+
+.menu ul li a.itens {
+  text-align: center;
+  color: #00d786;
+  display: block;
+  padding: 16px;
+  text-decoration: none;
+  font-size: 20px !important;
+}
+
+.menu ul li.active a.itens {
+  width: auto;
+  height: auto;
+  overflow: auto;
+  background-color: #ffffff;
+}
