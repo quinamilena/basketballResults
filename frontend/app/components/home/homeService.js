@@ -1,13 +1,18 @@
 bas_app.service("homeService", homeService);
 
-function homeService($http) {
-  let _getAllGames = () => {
+function homeService($http, $rootScope) {
+  let _gameFirts = () => {
     return new Promise((result, reject) => {
       try {
         $http({
-          url: "../../../db/games.json",
+          url: $rootScope.baseURL + "/gameFirts",
           method: "GET",
+          headers: {
+            authorization: $rootScope.user.id,
+          },
         }).then((resp) => {
+          if (resp.data.error) return reject(error);
+
           return result(resp.data);
         });
       } catch (error) {
@@ -17,6 +22,6 @@ function homeService($http) {
   };
 
   return {
-    getAllGames: _getAllGames,
+    gameFirts: _gameFirts,
   };
 }

@@ -2,15 +2,18 @@ const connection = require("../database/connection");
 
 module.exports = {
   async signIn(request, response) {
-    const login = request.body.login;
+    const login = request.params.login;
 
     try {
       const user = await connection("users")
-        .select("*")
+        .column("id", "name", "login")
+        .select()
         .where("login", "=", login)
         .first();
 
-      return response.json({ error: false, data: !user ? [] : user });
+      return response
+        .status(200)
+        .json({ error: false, data: !user ? [] : user });
     } catch (error) {
       return response.status(500).json({ error: true, data: error });
     }

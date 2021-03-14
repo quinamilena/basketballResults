@@ -16,18 +16,37 @@ function writePontisController(
   };
 
   $scope.saveGame = () => {
-    $scope.game.idUser = $rootScope.user.id;
+    let month =
+      $scope.game.dtGame.getMonth() > 9
+        ? String(Number($scope.game.dtGame.getMonth() + 1))
+        : String("0" + Number($scope.game.dtGame.getMonth() + 1));
+
+    let year = String($scope.game.dtGame.getFullYear());
+
+    let day =
+      $scope.game.dtGame.getDay() > 9
+        ? String(Number($scope.game.dtGame.getDay() + 1))
+        : String("0" + Number($scope.game.dtGame.getDay() + 1));
+
+    $scope.game.gameDate = String(year + "-" + month + "-" + day);
 
     writePontisService.saveGame($scope.game).then((reps) => {
       try {
-        if (reps.data.status === 200) {
-          $scope.game = {};
-          $scope.mensagens.success = true;
+        if (!reps.error) {
+          $scope.$apply(() => {
+            $scope.game = {};
+
+            $scope.mensagens.success = true;
+          });
         } else {
-          $scope.mensagens.error = true;
+          $scope.$apply(() => {
+            $scope.mensagens.error = true;
+          });
         }
       } catch (error) {
-        $scope.mensagens.error = true;
+        $scope.$apply(() => {
+          $scope.mensagens.error = true;
+        });
         return console.error(error);
       }
     });

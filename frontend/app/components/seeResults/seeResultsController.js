@@ -8,7 +8,7 @@ function seeResultsController($rootScope, $scope, $state, seeResultsService) {
 
   seeResultsService.getUserResult().then((response) => {
     $scope.$apply(() => {
-      $scope.resultUser = response[0];
+      $scope.resultUser = response.data;
     });
   });
 }

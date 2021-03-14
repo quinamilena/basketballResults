@@ -11,6 +11,7 @@ bas_app.run(($rootScope) => {
 });
 
 bas_app.run(($rootScope, $state) => {
+  $rootScope.baseURL = "http://localhost:3333";
   $rootScope.stateMenu = false;
 
   $rootScope.openAndCloseMenu = () => {

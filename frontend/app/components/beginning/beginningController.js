@@ -7,15 +7,13 @@ function beginningController($rootScope, $scope, $state, beginningService) {
     if (!login) return;
 
     beginningService.checkLogin(login).then((res) => {
-      if (res.length > 0) {
-        let data = res[0];
+      if (!res.error) {
+        let data = res.data;
 
         $rootScope.user = {
           id: data.id,
           name: data.name,
           login: data.login,
-          record: data.record,
-          timeRecord: data.timeRecord,
           active: true,
         };
 

@@ -1,12 +1,13 @@
 bas_app.service("signinService", signinService);
 
-function signinService($http) {
+function signinService($http, $rootScope) {
   let _saveUser = (user) => {
     return new Promise((result, reject) => {
       try {
         $http({
-          url: "http://localhost:3333/user",
+          url: $rootScope.baseURL + "/user",
           method: "POST",
+          data: user,
         }).then((resp) => {
           return result(resp.data);
         });

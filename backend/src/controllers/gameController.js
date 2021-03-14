@@ -102,44 +102,53 @@ module.exports = {
   async getResult(request, response) {
     try {
       const user_id = request.headers.authorization;
-      let totalPoinst = 0;
+      let totalPoints = 0;
 
       const allGames = await connection("games")
         .select("*")
         .where("user_id", "=", user_id);
 
       allGames.forEach((game) => {
-        totalPoinst += Number(game.quantPoints);
+        totalPoints += Number(game.quantPoints);
       });
 
-      const dateSort = allGames.sort((x, y) => {
+      const timeRecordUser = await connection("users")
+        .select("timeRecord")
+        .where("id", user_id);
+
+      const dateSort = await allGames.sort((x, y) => {
         let a = new Date(x.gameDate),
           b = new Date(y.gameDate);
 
         return a - b;
       });
 
-      const pointsSort = allGames.sort((a, b) => {
-        return Number(a.quantPoints) - Number(b.quantPoints);
+      const allPoints = allGames.map((game) => {
+        if (game.quantPoints) return game.quantPoints;
       });
 
-      const totalGame = allGames.length;
-      const mediaPoints = totalPoinst / totalGame;
+      const pointsSort = await allPoints.sort((a, b) => {
+        return Number(a) - Number(b);
+      });
+
+      const totalGames = allGames.length;
+      const mediaPoints = totalPoints / totalGames;
 
       const firstGame = dateSort[0].gameDate;
       const lastGame = dateSort[dateSort.length - 1].gameDate;
 
-      const lowestScore = pointsSort[0].quantPoints;
-      const highestScore = pointsSort[pointsSort.length - 1].quantPoints;
+      const lowestScore = pointsSort[0];
+      const highestScore = pointsSort[pointsSort.length - 1];
 
       const data = {
         firstGame: firstGame,
         lastGame: lastGame,
-        totalPoinst: totalPoinst,
+        totalPoints: totalPoints,
         mediaPoints: mediaPoints,
-        totalGame: totalGame,
+        totalGames: totalGames,
         highestScore: highestScore,
         lowestScore: lowestScore,
+        timeRecord: timeRecordUser[0].timeRecord,
       };
 
       return response.status(200).json({ error: false, data: data });

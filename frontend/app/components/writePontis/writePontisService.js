@@ -1,17 +1,23 @@
 bas_app.service("writePontisService", writePontisService);
 
-function writePontisService($http) {
+function writePontisService($http, $rootScope) {
   let _saveGame = (game) => {
+    delete game.dtGame;
+
     return new Promise((result, reject) => {
       try {
-        game.id = "0111";
-        console.dir(game);
-        // $http({
-        //   url: "../../../db/results.json",
-        //   method: "GET",
-        // }).then((resp) => {
-        return result({ data: { status: 500 } });
-        // });
+        $http({
+          url: $rootScope.baseURL + "/game",
+          method: "POST",
+          headers: {
+            authorization: $rootScope.user.id,
+          },
+          data: game,
+        }).then((resp) => {
+          if (resp.data.error) return reject(error);
+
+          return result(resp.data);
+        });
       } catch (error) {
         return reject(error);
       }

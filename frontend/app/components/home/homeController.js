@@ -4,9 +4,9 @@ function homeController($rootScope, $scope, $state, homeService) {
   if (!$rootScope.user.active) return $state.go("beginning");
   $rootScope.stateMenu = false;
 
-  homeService.getAllGames().then((resp) => {
+  homeService.gameFirts().then((resp) => {
     $scope.$apply(() => {
-      $scope.allGames = resp;
+      $scope.allGames = resp.data;
     });
   });
 }

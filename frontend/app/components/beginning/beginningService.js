@@ -1,18 +1,18 @@
 bas_app.service("beginningService", beginningService);
 
-function beginningService($http) {
-  let _checkLogin = (login) => {
+function beginningService($http, $rootScope) {
+  let _checkLogin = (data) => {
     return new Promise((result, reject) => {
       try {
         $http({
-          url: "../../../db/users.json",
+          url: $rootScope.baseURL + "/user/" + data,
           method: "GET",
         }).then((resp) => {
-          let user = resp.data.filter(
-            (user) => user.login.toLowerCase() === login.toLowerCase()
-          );
+          if (resp.data.error) return reject(error);
 
-          return result(user);
+          if (resp.data.data.length <= 0) return result({ error: true });
+
+          return result(resp.data);
         });
       } catch (error) {
         return reject(error);

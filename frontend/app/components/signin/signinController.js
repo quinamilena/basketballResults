@@ -17,21 +17,29 @@ function signinController($rootScope, $scope, $state, $timeout, signinService) {
   $scope.saveUser = () => {
     signinService.saveUser($scope.user).then((response) => {
       try {
-        if (response.status === 200 && response.exist) {
-          $scope.errorLogin = true;
+        if (!response.error && response.exist) {
+          $scope.$apply(() => {
+            $scope.errorLogin = true;
+          });
 
           return;
-        } else if (response.status === 200 && !response.exist) {
-          $scope.mensagens.success = true;
+        } else if (!response.error && !response.exist) {
+          $scope.$apply(() => {
+            $scope.mensagens.success = true;
+          });
 
           $timeout(() => {
             $state.go("beginning");
           }, 1000);
         } else {
-          $scope.mensagens.error = true;
+          $scope.$apply(() => {
+            $scope.mensagens.error = true;
+          });
         }
       } catch (error) {
-        $scope.mensagens.error = true;
+        $scope.$apply(() => {
+          $scope.mensagens.error = true;
+        });
         return console.error(error);
       }
     });
